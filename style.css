@@ -1,0 +1,126 @@
+/* Ajustement du style pour .content avec une marge supérieure réduite */
+body {
+    background-color:#4CAF50;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 20px 0 0;
+    margin-top: 8px; /* Réduit à 20px pour apparaître légèrement en haut */
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:24px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color:#F5F5F5;
+}
+
+/* Réduire le décalage entre titre et paragraphe */
+.content h1 {
+    margin-bottom: 10px;
+}
+
+.content p {
+    margin: 0;
+}
+
+@media (min-width: 200px) {
+    .content {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Styliser l'image avec des dimensions ajustables */
+.sport-image {
+    margin-top: 20px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 1370px;
+    height: 500px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color:#4CAF50;
+}
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+    color: #F5F5F5;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.top-bar {
+    padding: 0px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+
+
+.top-right select {
+    margin: 0 5px;
+    padding: 2px;
+    background-color:darkgrey;
+    font-size:15px;
+}
+
+.sidebar {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.sidebar label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.sidebar select {
+    padding: 6px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid darkgrey;
+    width: 180px;
+    background-color: darkgrey;
+}
+
+.left-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sidebar select {
+    position: relative;
+    z-index: 10;
+}
+
+.cart {
+    font-size: 23px;
+}
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - KitsKingdom</title>
+    <link rel="stylesheet" href="panier.css">
+</head>
+
+<body>
+
+    <a class="back-home" href="index.php">🏠 Retour à l'accueil</a>
+    <h1>Votre Panier</h1>
+
+    <table id="cart-table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix (€)</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div class="total" id="cart-total">Total : 0 €</div>
+    <div class="payment-container">
+    <button onclick="redirectToPayment()" class="pay-button">Confirmer le paiement</button>
+</div>
+
+<script>
+function redirectToPayment() {
+    const cart = localStorage.getItem("cart");
+    localStorage.setItem("pendingPayment", cart);  // stock temporaire
+    window.location.href = "paiement.php";
+}
+</script>
+
+    <script>
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const tbody = document.querySelector("#cart-table tbody");
+            const totalDisplay = document.getElementById("cart-total");
+            tbody.innerHTML = "";
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const row = document.createElement("tr");
+
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.price.toFixed(2)}</td>
+                    <td>${item.quantity}</td>
+                    <td>${itemTotal.toFixed(2)} €</td>
+                    <td><button class="remove-btn" onclick="removeItem(${index})">Supprimer</button></td>
+                `;
+
+                tbody.appendChild(row);
+            });
+
+            totalDisplay.textContent = "Total : " + total.toFixed(2) + " €";
+        }
+
+        function removeItem(index) {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCart();
+        }
+
+        window.onload = renderCart;
+    </script>
+
+</body>
+</html>

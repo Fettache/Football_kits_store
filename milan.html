@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KitsKingdom - AC Milan</title>
+    <link rel="stylesheet" href="milan.css">
+</head>
+<body>
+
+    <header>
+        <h1>AC Milan - Tenues Officielles</h1>
+        <div class="top-bar">
+            <label for="currency-select"></label>
+            <select id="currency-select">
+                <option value="eur">EUR €</option>
+                <option value="mad">MAD DH</option>
+            </select>
+        </div>
+    </header>
+
+    <a href="index.php" class="back-home">🏠 Retour à l'accueil</a>
+
+    <div class="container">
+
+        <!-- Tenue 1 -->
+        <div class="jersey-card">
+            <img src="milan_home.jpg" alt="Tenue AC Milan 1">
+            <p class="price" data-eur="38">Prix : 38 €</p>
+            <button onclick="addToCartAndRedirect('Maillot Milan Domicile', 38)">Commander</button>
+        </div>
+
+        <!-- Tenue 2 -->
+        <div class="jersey-card">
+            <img src="milan_away.jpg" alt="Tenue AC Milan 2">
+            <p class="price" data-eur="40">Prix : 40 €</p>
+            <button onclick="addToCartAndRedirect('Maillot Milan Exterieur', 40)">Commander</button>
+        </div>
+
+        <!-- Tenue 3 -->
+        <div class="jersey-card">
+            <img src="milan_third.jpg" alt="Tenue AC Milan 3">
+            <p class="price" data-eur="29">Prix : 29 €</p>
+            <button onclick="addToCartAndRedirect('Maillot Milan Third', 29)">Commander</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Changement devise
+        document.getElementById("currency-select").addEventListener("change", function () {
+            const currency = this.value;
+            const prices = document.querySelectorAll(".price");
+            const rate = 10;
+
+            prices.forEach(price => {
+                const eurValue = parseFloat(price.dataset.eur);
+                if (currency === "mad") {
+                    price.textContent = "Prix : " + (eurValue * rate).toFixed(0) + " DH";
+                } else {
+                    price.textContent = "Prix : " + eurValue + " €";
+                }
+            });
+        });
+
+        // Ajouter au panier + redirection
+        function addToCartAndRedirect(name, price) {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const index = cart.findIndex(item => item.name === name);
+
+            if (index !== -1) {
+                cart[index].quantity += 1;
+            } else {
+                cart.push({ name: name, price: price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            window.location.href = "panier.html";
+        }
+    </script>
+
+</body>
+</html>

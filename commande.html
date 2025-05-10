@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Commande - KitsKingdom</title>
+    <link rel="stylesheet" href="commande.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Formulaire de Commande</h1>
+
+        <form action="#" method="post">
+            <label for="name">Nom complet :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Adresse email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Adresse de livraison :</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+
+            <label for="team">Équipe :</label>
+            <select id="team" name="team" required>
+                <option value="">-- Sélectionner --</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="liverpool">Liverpool</option>
+                <option value="acmilan">AC Milan</option>
+                <option value="manunited">Manchester United</option>
+            </select>
+
+            <label for="size">Taille :</label>
+            <select id="size" name="size" required>
+                <option value="">-- Sélectionner --</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+
+            <button type="submit">Valider la commande</button>
+        </form>
+    </div>
+
+</body>
+</html>
