@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS kitskingdom
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE kitskingdom;
+
+CREATE TABLE IF NOT EXISTS commandes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(120) NOT NULL,
+  adresse TEXT NOT NULL,
+  telephone VARCHAR(30) NOT NULL,
+  produits TEXT NOT NULL,
+  total DECIMAL(10, 2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
